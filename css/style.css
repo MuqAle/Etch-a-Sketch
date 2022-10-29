@@ -1,0 +1,12 @@
+.grid-container{
+    width: 600px;
+    height: 600px;
+    border: 5px;
+    display: grid;
+    border-style: solid;
+}
+
+.box{
+    border: 1px;
+    border-style: solid;
+}

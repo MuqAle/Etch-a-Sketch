@@ -1,6 +1,5 @@
 const container = document.querySelector('.grid-container')
 
-
 function makeDivs(divs){
     let dimensions = divs**2
     for (let i = 0; i <= dimensions -1; i++ ){
@@ -14,15 +13,19 @@ function makeDivs(divs){
 
 makeDivs(16);
 
-// container.addEventListener('mousedown', function (e) {
-//     console.log(e)})
 
 function changeBoxColor(e){
-    e.target.style.background = 'gray';
-    e.stopPropagation; 
+    if (e.buttons == 1){
+    e.target.style.background = 'gray'; }
+    container.style.removeProperty('background')
 };
 
-container.children.addEventListener('click', changeBoxColor)
+container.addEventListener('mousemove', changeBoxColor)
+
+
+
+
+
     
  
 

@@ -11,16 +11,30 @@ function makeDivs(divs){
     container.style.gridTemplateColumns = `repeat(${divs}, 1fr)`;
 };
 
-makeDivs(16);
+
+function events(){
+    container.addEventListener('mousemove', function(e){
+        if (e.buttons == 1){
+            changeBoxColor(e)
+        }});
+    container.addEventListener('click', changeBoxColor);
+}
 
 
 function changeBoxColor(e){
-    if (e.buttons == 1){
-    e.target.style.background = 'gray'; }
-    container.style.removeProperty('background')
+    e.target.style.background = 'gray';
+    e.target.classList.add('colored');
+    container.style.removeProperty('background');
+    
 };
 
-container.addEventListener('mousemove', changeBoxColor)
+makeDivs(16);
+
+events()
+
+
+
+
 
 
 

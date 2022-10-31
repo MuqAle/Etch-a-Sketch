@@ -4,9 +4,25 @@
     border: 5px;
     display: grid;
     border-style: solid;
+    background-color: white;
+    
+    
 }
 
 .box{
-    border: 1px;
+    border: .1px;
     border-style: solid;
+    border-color: rgb(183, 183, 183);
+}
+
+#etch-a-sketch{
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+    flex-wrap: wrap-reverse;
+    flex-grow: 1;
+}
+
+#settings{
+    align-self: center;
 }

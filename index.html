@@ -8,22 +8,27 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Etch a Sketch</h1>
     <div id = 'etch-a-sketch'>
         <div id="settings">
             <div class="color-box">
-            <input type = 'color' id = 'box-color' name="pick-color">
+            <input type = 'color' id = 'box-color' name="pick-color" value="#bbc1f6">
             </div>
-            <button id="pen">Pen</button>
-            <button id="random-color">Randomizer</button>
-            <button id="eraser">Eraser</button>
-            <button id="clear">Clear</button>
-            <div class="box-dimensions">
-                <input type="range" id="slider" min="8" max="64" step="2" value="16">
-                <p><span id="dimensions">16 x 16</span></p>
+            <div id="buttons">
+                <button class="button-categories" id="pen">Pen</button>
+                <button class="button-categories" id="random-color">Randomizer</button>
+                <button class="button-categories" id="eraser">Eraser</button>
+                <button class="button-categories" id="clear">Clear</button>
             </div>
         </div>
-        <div class="grid-container">    
+        <div id="right-side">
+            <h1>Etch a Sketch</h1>
+            <div class="grid-container">
+
+            </div>
+            <div class="box-dimensions">
+                <p><span id="dimensions">16 x 16</span></p>
+                <input type="range" id="slider" min="8" max="64" step="2" value="16">
+            </div>
         </div>
     </div>
     <script src="js/script.js"></script>

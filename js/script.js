@@ -3,6 +3,10 @@ const color = document.querySelector('#box-color')
 const clearBtn = document.querySelector('#clear')
 const slider = document.querySelector('#slider')
 const output = document.querySelector("#dimensions")
+const eraserBtn = document.querySelector("#eraser")
+const penBtn = document.querySelector("#pen")
+const randomBtn = document.querySelector('#random-color')
+
 
 
 slider.oninput = function() {
@@ -29,6 +33,18 @@ function changeBoxColor(e){
     
 };
 
+function randomNumber(){
+    return Math.floor(Math.random() * 256)
+}
+
+
+function randomColor(e){
+
+    e.target.style.background = `rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()})`
+    e.target.classList.add('colored');
+    container.style.removeProperty('background');
+}
+
 function clearEverything(){
     try
     {
@@ -39,44 +55,64 @@ function clearEverything(){
     }  
     catch(err){} 
 }
-             
 
-function events(){
-    container.addEventListener('mousemove', function(e){
-        if (e.buttons == 1){
-            changeBoxColor(e)
-            e.preventDefault()
-        }});
-    container.addEventListener('click', changeBoxColor);
-    clearBtn.addEventListener('click', () => {clearEverything()});
-    slider.addEventListener('input', () => {
-        container.replaceChildren();
-        makeDivs()})
+function eraseColor(e){
+
+    e.target.style.removeProperty('background')
+    e.target.classList.remove('colored')
 }
 
 
-makeDivs()
-
-events()
-
-
-
-
-
-
-
-
-console.log(typeof(Number(slider.value)))
-
-
-
-
-
-
-
-
-
+function usingPen(){
     
- 
+        container.addEventListener('mousemove', function(e){
+            if (e.buttons == 1){
+                changeBoxColor(e);
+                e.preventDefault();
+            }});
+        container.addEventListener('click', changeBoxColor);
+    }
 
+
+function usingEraser(){
+
+        container.addEventListener('mousemove', function(e){
+            if (e.buttons == 1){
+                eraseColor(e);
+                e.preventDefault()
+            }
+        });
+        container.addEventListener('click', eraseColor)
+    }
+
+function usingRandomizer(){
+
+    container.addEventListener('mousemove', function(e){
+        if (e.buttons == 1){
+            randomColor(e);
+            e.preventDefault()
+        }
+    });
+    container.addEventListener('click', randomColor)
+}
+
+             
+
+function events(){
+    makeDivs();
+    usingPen();
+    randomBtn.addEventListener('click', () => {usingRandomizer()})
+    penBtn.addEventListener('click',() => {usingPen()});
+    eraserBtn.addEventListener('click', () => {usingEraser()});
+    clearBtn.addEventListener('click', () => {clearEverything()});
+    slider.addEventListener('input', () => {
+        container.replaceChildren();
+        makeDivs()});
+    
+}
+
+
+
+
+events();
 
